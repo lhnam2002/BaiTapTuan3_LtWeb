@@ -1,4 +1,5 @@
 ﻿using HoangNam_5532.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HoangNam_5532.Repository
 {
@@ -10,30 +11,34 @@ namespace HoangNam_5532.Repository
             _context = context;
         }
 
-        public Task AddAsync(Category category)
+        public async Task AddAsync(Category category)
         {
-            throw new NotImplementedException();
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var category = await _context.Categories.FindAsync(id);
+            _context.Categories.Remove(category);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Category>> GetAllAsync()
+        public async Task<IEnumerable<Category>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Categories.ToListAsync();
         }
 
-        public Task<Category> GetByIdAsync(int id)
+        public async Task<Category> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Categories.FindAsync(id);
         }
 
-        public Task UpdateAsync(Category category)
+        public async Task UpdateAsync(Category category)
         {
-            throw new NotImplementedException();
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
         }
-        
     }
+
 }
