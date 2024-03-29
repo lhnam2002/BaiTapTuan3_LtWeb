@@ -9,7 +9,7 @@ namespace HoangNam_5532.Controllers
     {
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly IProductImageRepository _productImageRepository;
+        //private readonly IProductImageRepository _productImageRepository;
         public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository)
         {
             _productRepository = productRepository;
@@ -48,7 +48,7 @@ namespace HoangNam_5532.Controllers
                         var productImage = new ProductImage();
                         productImage.ProductId = product.Id;
                         productImage.Url = await SaveImage(file);
-                        await _productImageRepository.AddAsync(productImage);
+                       // await _productImageRepository.AddAsync(productImage);
                     }
                 }
                 await _productRepository.AddAsync(product);
