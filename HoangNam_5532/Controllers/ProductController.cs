@@ -1,10 +1,13 @@
 ﻿using HoangNam_5532.Models;
 using HoangNam_5532.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HoangNam_5532.Controllers
 {
+    //[Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
